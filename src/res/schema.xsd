@@ -1,0 +1,43 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!-- DO NOT CHANGE THIS FILE -->
+<!-- IT IS USED FOR VALIDATION, ANY CHANGES MAY CAUSE PROGRAM EXCEPTION -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="task" type="TaskType"/>
+
+	<xs:complexType name="TaskType">
+		<xs:sequence>
+			<xs:element name="database" type="DatabaseType" maxOccurs="unbounded"/>
+		</xs:sequence>	
+	</xs:complexType>
+
+	<xs:complexType name="DatabaseType">
+		<xs:sequence>
+			<xs:element name="convert" type="ConvertType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="csFrom" type="xs:string" use="required" />
+		<xs:attribute name="dbTypeFrom" type="xs:string" use="required"/>
+		<xs:attribute name="csTo" type="xs:string" use="required"/>
+		<xs:attribute name="dbTypeTo" type="xs:string" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="ConvertType">
+		<xs:sequence>
+			<xs:element name="tableFrom" type="TableType"/>
+			<xs:element name="tableTo" type="TableType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="TableType">
+		<xs:sequence>
+			<xs:element name="column" type="ColumnType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="ColumnType">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="modifier" type="xs:string"/>
+		<xs:attribute name="type" type="xs:string"/>
+	</xs:complexType>
+</xs:schema>

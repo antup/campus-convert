@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<task>
+	<database csFrom="csFrom" dbTypeFrom="mssql" csTo="csTo" dbTypeTo="mysql">
+		<convert>
+			<tableFrom name="TableFrom">
+				<column name="col1" type="string"/>
+				<column name="col2" type="string"/>
+				<column name="col3" type="int"/>
+			</tableFrom>
+			<tableTo name="TableTo">
+				<column name="col_name1" modifier="mod1" type="string"/>
+				<column name="col_name2" modifier="mod1" type="string"/>
+				<column name="col_name3" modifier="mod2" type="int"/>
+			</tableTo>
+		</convert>
+		<convert>
+			<tableFrom name="TableFrom2">
+				<column name="col1" type="string"/>
+				<column name="col2" type="string"/>
+				<column name="col3" type="int"/>
+			</tableFrom>
+			<tableTo name="TableTo2">
+				<column name="col_name1" modifier="mod1" type="string"/>
+				<column name="col_name2" modifier="mod1" type="string"/>
+				<column name="col_name3" modifier="mod2" type="int"/>
+			</tableTo>
+		</convert>
+	</database>
+	<database csFrom="csFrom2" dbTypeFrom="mssql" csTo="csTo" dbTypeTo="mysql">
+		<convert>
+			<tableFrom name="TableFrom">
+				<column name="col1" type="string"/>
+				<column name="col2" type="string"/>
+				<column name="col3" type="int"/>
+			</tableFrom>
+			<tableTo name="TableTo">
+				<column name="col1" modifier="mod1" type="string"/>
+				<column name="col2" modifier="mod1" type="string"/>
+				<column name="col3" modifier="mod2" type="int"/>
+			</tableTo>
+		</convert>
+	</database>
+</task>
