@@ -64,14 +64,6 @@ public class ModifierFactory {
 		}
 		return null;
 	}
-
-	public static void main(String[] args) {
-		try {
-			getModifier("test").modify(null);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	static {
 		if (new File(System.getProperty("java.class.path")).isAbsolute())
