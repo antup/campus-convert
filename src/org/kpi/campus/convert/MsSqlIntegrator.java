@@ -6,21 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 public class MsSqlIntegrator implements SqlIntegrator {
 	private String hostName;
 	private String dbName;
 	private Connection con;
+	private String connectionString;
 
-	public MsSqlIntegrator(String serverHostName, String databaseName) {
+	public MsSqlIntegrator(String connString) {
 		super();
-		hostName = serverHostName;
-		dbName = databaseName;
+		connectionString = connString;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		} catch (ClassNotFoundException e) {
-			System.err.println("MsSql jdbc driver not found. You should install it first.");
+			System.err
+					.println("MsSql jdbc driver not found. You should install it first.");
 		}
+	}
+
+	public MsSqlIntegrator(String serverHostName, String databaseName) {
+		this("jdbc:sqlserver://" + serverHostName + ";database=" + databaseName
+				+ ";integratedSecurity=true;");
 	}
 
 	@Override
@@ -34,7 +39,6 @@ public class MsSqlIntegrator implements SqlIntegrator {
 		Statement statement = con.createStatement();
 		return statement.executeUpdate(stmt);
 	}
-
 
 	public String getHostName() {
 		return hostName;
@@ -54,9 +58,8 @@ public class MsSqlIntegrator implements SqlIntegrator {
 
 	@Override
 	public boolean openConnection() {
-		String connectionUrl = "jdbc:sqlserver://"+hostName+";database="+dbName+";integratedSecurity=true;";
 		try {
-			con = DriverManager.getConnection(connectionUrl);
+			con = DriverManager.getConnection(connectionString);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
