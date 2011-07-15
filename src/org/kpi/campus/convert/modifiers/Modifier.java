@@ -4,10 +4,15 @@
 package org.kpi.campus.convert.modifiers;
 
 /**
- * Modifier interface
+ * Interface definition for a modifier.
  * @author Igor Kokhanevych
- *
  */
 public interface Modifier {
-	Object modify(Object obj);
+	/**
+	 * 
+	 * @param obj The <code>Object</code> to be modified.
+	 * @param args The arguments for a modifier.
+	 * @return The modified object.
+	 */
+	Object modify(Object obj, String... args);
 }
